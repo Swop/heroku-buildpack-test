@@ -9,4 +9,8 @@
 #
 #FORCE_FAILED_COMPILATION=false
 
-echo 'This is the content of the test script'
+echo 'Env vars:'
+env
+
+echo 'PHP -v?'
+php -v
