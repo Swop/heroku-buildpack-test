@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "Random App" && exit 0

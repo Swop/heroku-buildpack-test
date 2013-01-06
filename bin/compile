@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+###################################################################
+#                    Heroku Test Buildpack
+#
+#        Author: Sylvain Mauduit <sylvain.mauduit@simple-it.fr>
+#
+###################################################################
+
+# bin/compile <build-dir> <cache-dir>
+
+FORCE_FAILED_COMPILATION=true
+SCRIPT_PATH=$(dirname `readlink -m "$0"`)
+
+# ----Local folders----
+BUILD_DIR=$1
+CACHE_DIR=$2
+BIN_DIR=$(dirname $0)
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+
+# ----FUNCTIONS---------------------------------------------------------
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+function strip_slashes() {
+  echo $(echo "$1" | sed -e "s/\//\\\\\//g")
+}
+
+mktmpdir() {
+  dir=$(mktemp -t $1-XXXX)
+  rm -rf $dir
+  mkdir -p $dir
+  echo $dir
+}
+
+echo "-----> Heroku Test Buildpack: Slug compilation start"
+
+# fail fast
+set -e
+set -o pipefail
+
+mkdir -p $BUILD_DIR $CACHE_DIR
+
+cd $BUILD_DIR
+
+# ---TEST AREA---------------------------------------------------------
+
+INCLUDED_TEST_SCRIPT='test.sh'
+test -f ${SCRIPT_PATH}/${INCLUDED_TEST_SCRIPT} && . ${SCRIPT_PATH}/${INCLUDED_TEST_SCRIPT}
+
+# ----------------------------------------------------------------------
+
+echo "-----> Slug compilation ends with success!"
+if $FORCE_FAILED_COMPILATION; then
+    echo "-----> Force compilation fail..."
+    exit 1
+fi;
+
+exit 0
