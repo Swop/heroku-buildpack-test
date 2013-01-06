@@ -12,10 +12,12 @@
 echo 'Env vars:'
 env
 
-echo 'whats the executables?'
+#echo 'whats the executables?'
+#for d in /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
+#do
+#        echo "Executables of ${d}:"
+#        ls -l  $d
+#done
 
-for d in /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
-do
-        echo "Executables of ${d}:"
-        ls -l  $d
-done
+echo 'Python version:'
+python --version
