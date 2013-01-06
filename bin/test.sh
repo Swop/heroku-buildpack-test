@@ -12,5 +12,10 @@
 echo 'Env vars:'
 env
 
-echo 'PHP -v?'
-php -v
+echo 'whats the executables?'
+
+for d in /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
+do
+        echo "Executables of ${d}:"
+        ls -l  $d
+done
