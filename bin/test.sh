@@ -7,10 +7,10 @@
 # You can force the compilation fail after this script. In order to do this,
 # just override the following variable in this script (the initial value is set to 'true'):
 #
-#FORCE_FAILED_COMPILATION=false
+FORCE_FAILED_COMPILATION=false
 
 echo 'Delete content of cache dir...'
-#rm -rf $CACHE_DIR/*
-echo $CACHE_DIR
+rm -rf $CACHE_DIR/*
+#echo $CACHE_DIR
 
-ls -la $CACHE_DIR
+#ls -la $CACHE_DIR
