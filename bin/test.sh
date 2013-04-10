@@ -9,4 +9,8 @@
 #
 #FORCE_FAILED_COMPILATION=false
 
-echo 'This is the content of the test script'
+echo 'Delete content of cache dir...'
+#rm -rf $CACHE_DIR/*
+echo $CACHE_DIR
+
+ls -la $CACHE_DIR
