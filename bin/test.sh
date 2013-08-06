@@ -23,6 +23,7 @@ mkdir -p $PHP_PATH && cd $PHP_PATH
 pwd
 curl --silent --max-time 500 --location $PHP_URL | tar xz
 ls -l
+cd $BUILD_DIR
 echo "---------------"
 #ls -l ${PHP_PATH}/bin/php || true
 echo "---------------"
