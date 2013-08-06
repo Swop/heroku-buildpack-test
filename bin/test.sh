@@ -10,7 +10,7 @@
 #FORCE_FAILED_COMPILATION=false
 
 PHP_VERSION=5.5.1
-PHP_URL="http://swop.io/public//php-${PHP_VERSION}-heroku.tar.gz"
+PHP_URL="http://www.open-dreams.net/public/php-${PHP_VERSION}-heroku.tar.gz"
 PHP_PATH="vendor/php"
 
 echo 'Env vars:'
