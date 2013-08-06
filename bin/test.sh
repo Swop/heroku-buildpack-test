@@ -13,16 +13,18 @@ PHP_VERSION=5.5.1
 PHP_URL="http://www.open-dreams.net/public/php-${PHP_VERSION}-heroku.tar.gz"
 PHP_PATH="vendor/php"
 
+pwd
 echo 'Env vars:'
 env
 echo "---------------"
 
 echo "---------> Bundling PHP"
 mkdir -p $PHP_PATH && cd $PHP_PATH
+pwd
 curl --silent --max-time 500 --location $PHP_URL | tar xz
-
+ls -l
 echo "---------------"
-ls -l ${PHP_PATH}/bin/php
+#ls -l ${PHP_PATH}/bin/php || true
 echo "---------------"
 ${PHP_PATH}/bin/php -v
 echo "---------------"
