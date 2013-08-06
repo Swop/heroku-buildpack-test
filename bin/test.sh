@@ -26,6 +26,9 @@ ls -l
 cd $BUILD_DIR
 echo "---------------"
 #ls -l ${PHP_PATH}/bin/php || true
+
+export LD_LIBRARY_PATH=${BUILD_DIR}/${PHP_PATH}/icu/lib:${BUILD_DIR}/${PHP_PATH}/ext:${LD_LIBRARY_PATH}
+export PATH=${BUILD_DIR}/${PHP_PATH}/bin:$PATH
 echo "---------------"
 ${PHP_PATH}/bin/php -v
 echo "---------------"
