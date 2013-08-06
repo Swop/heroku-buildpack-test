@@ -9,15 +9,22 @@
 #
 #FORCE_FAILED_COMPILATION=false
 
+PHP_VERSION=5.5.1
+PHP_URL="http://swop.io/public//php-${PHP_VERSION}-heroku.tar.gz"
+PHP_PATH="vendor/php"
+
 echo 'Env vars:'
 env
+echo "---------------"
 
-#echo 'whats the executables?'
-#for d in /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
-#do
-#        echo "Executables of ${d}:"
-#        ls -l  $d
-#done
+echo "---------> Bundling PHP"
+mkdir -p $PHP_PATH && cd $PHP_PATH
+curl --silent --max-time 500 --location $PHP_URL | tar xz
 
-echo 'Python version:'
-python --version
+echo "---------------"
+ls -l ${PHP_PATH}/bin/php
+echo "---------------"
+${PHP_PATH}/bin/php -v
+echo "---------------"
+${PHP_PATH}/bin/php -i
+
